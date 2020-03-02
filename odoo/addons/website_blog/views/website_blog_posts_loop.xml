@@ -76,6 +76,18 @@ according to the enabled options.
                 </span>
                 <hr class="mt-2"/>
             </div>
+            
+            <div t-if="series" class="col-12 mb-3">
+                <div class="h4 mb-3"> <t t-esc="len(posts)"/>
+                    <t t-if="len(posts) &lt; 2">Article</t>
+                    <t t-else="">Articles</t>
+                </div>
+                <span class="align-items-baseline border d-inline-flex pl-2 rounded mb-2">
+                    <i class="fa fa-book-o mr-2 text-muted"/>
+                    <t t-esc="series.name" />
+                </span>
+                <hr class="mt-2"/>
+            </div>
 
             <!-- Define 'colWidth' qWeb variable, to be assigned later.
             Adjust accordingly if sidebar and/or readability modes are active. -->
@@ -159,7 +171,7 @@ according to the enabled options.
 <template id="post_info">
     <div class="d-flex small flex-wrap mb-1 w-100">
         <div t-attf-class="d-flex flex-wrap align-items-center justify-content-between mx-n2 #{opt_blog_list_view and 'flex-grow-0 w-auto mw-100' or 'flex-grow-1' }">
-            <time t-field="blog_post.post_date" class="text-nowrap font-weight-bold px-2" t-options='{"format": "MMM d, yyyy"}'/>
+            <time t-field="blog_post.post_date" class="text-nowrap font-weight-bold px-2" t-options='{"format": "yyyy-MM-d"}'/>
             <div t-if="opt_posts_loop_show_stats" class="px-2">
                 <b class="text-nowrap"><i class="fa fa-comment text-muted mr-1"/><t t-esc="len(blog_post.message_ids)"/></b>
                 <b class="text-nowrap pl-2"><i class="fa fa-binoculars text-muted mr-1"/><t t-esc="blog_post.visits"/></b>
