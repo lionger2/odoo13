@@ -483,6 +483,7 @@
     </template>
 
     <template id="brand_promotion_message" name="Brand Promotion Message">
+    	<!-- 
         <t t-set="odoo_logo">
             <a target="_blank"
                 t-attf-href="http://www.odoo.com?utm_source=db&amp;utm_medium=#{_utm_medium}"
@@ -494,6 +495,7 @@
         </t>
         <t t-set="final_message">Powered by %s%s</t>
         <t t-raw="final_message % (odoo_logo, _message and ('- %s' % _message) or '')"/>
+         -->
     </template>
     <template id="brand_promotion" name="Brand Promotion">
         <div class="o_brand_promotion">

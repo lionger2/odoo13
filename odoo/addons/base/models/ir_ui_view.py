@@ -696,10 +696,9 @@ actual arch.
 
         # read the view arch
         [view_data] = root.read(fields=fields)
-        try:
-            view_arch = etree.fromstring(view_data['arch'].encode('utf-8'))
-        except Exception as e:
-            print("a")
+
+        view_arch = etree.fromstring(view_data['arch'].encode('utf-8'))
+
             
             
         

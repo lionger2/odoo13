@@ -201,7 +201,7 @@ class IrHttp(models.AbstractModel):
             return request._handle_exception(exception)
         except AccessDenied:
             return werkzeug.exceptions.Forbidden()
-
+    #先_match,根据url找到批判的
     @classmethod
     def _dispatch(cls):
         cls._handle_debug()

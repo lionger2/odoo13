@@ -826,7 +826,6 @@ class Home(http.Controller):
 
     @http.route('/', type='http', auth="none")
     def index(self, s_action=None, db=None, **kw):
-        print('a')
         
         return http.local_redirect('/web', query=request.params, keep_hash=True)
 
@@ -834,8 +833,6 @@ class Home(http.Controller):
     @http.route('/web', type='http', auth="none")
     def web_client(self, s_action=None, **kw):
         ensure_db()
-        
-        print('abbbd')
         
         if not request.session.uid:
             return werkzeug.utils.redirect('/web/login', 303)
