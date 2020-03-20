@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
         <record id="action_partner_deduplicate" model="ir.actions.act_window">
-            <field name="name">Deduplicate Contacts</field>
+            <field name="name">排重</field>
             <field name="res_model">base.partner.merge.automatic.wizard</field>
             <field name="view_mode">form</field>
             <field name="target">new</field>
@@ -19,16 +19,13 @@
                             <button name="%(action_partner_deduplicate)d" string="Deduplicate the other Contacts" class="oe_highlight" type="action"/>
                         </group>
                         <p class="oe_grey" attrs="{'invisible': [('state', '!=', ('option'))]}">
-                            Select the list of fields used to search for
-                            duplicated records. If you select several fields,
-                            Odoo will propose you to merge only those having
-                            all these fields in common. (not one of the fields).
+                        	选择用于自动搜索重复数据的判断字段.如果选择多个,则这几个字段同时相等则判断为重复
                         </p>
                         <group attrs="{'invisible': ['|', ('state', 'not in', ('selection', 'finished')), ('number_group', '=', 0)]}">
                             <field name="state" invisible="1" />
                             <field name="number_group"/>
                         </group>
-                        <group string="Search duplicates based on duplicated data in"
+                        <group string="重复数据判断字段:"
                             attrs="{'invisible': [('state', 'not in', ('option',))]}">
                             <field name='group_by_email' />
                             <field name='group_by_name' />
@@ -36,23 +33,21 @@
                             <field name='group_by_vat' />
                             <field name='group_by_parent_id' />
                         </group>
-                        <group string="Exclude contacts having"
+                        <group string="以下记录被排除:"
                             attrs="{'invisible': [('state', 'not in', ('option',))]}">
                             <field name='exclude_contact' />
                             <field name='exclude_journal_item' />
                         </group>
-                        <separator string="Options" attrs="{'invisible': [('state', 'not in', ('option',))]}"/>
+                        <separator string="选项" attrs="{'invisible': [('state', 'not in', ('option',))]}"/>
                         <group attrs="{'invisible': [('state', 'not in', ('option','finished'))]}">
                             <field name='maximum_group' attrs="{'readonly': [('state', 'in', ('finished'))]}"/>
                         </group>
-                        <separator string="Merge the following contacts"
+                        <separator string="合并以下:"
                             attrs="{'invisible': [('state', 'in', ('option', 'finished'))]}"/>
                         <group attrs="{'invisible': [('state', 'in', ('option', 'finished'))]}" col="1">
                             <p class="oe_grey">
-                                Selected contacts will be merged together.
-                                All documents linked to one of these contacts
-                                will be redirected to the destination contact.
-                                You can remove contacts from this list to avoid merging them.
+                            	所有的文档,数据都会被合并到目标对象,如果不想合并,可以在列表中移除.
+
                             </p>
                             <group col="2">
                                 <field name="dst_partner_id" domain="[('id', 'in', partner_ids or False)]" attrs="{'required': [('state', '=', 'selection')]}"/>
@@ -70,29 +65,29 @@
                         </group>
                     </sheet>
                     <footer>
-                        <button name='action_merge' string='Merge Contacts'
+                        <button name='action_merge' string='合并'
                             class='oe_highlight'
                             type='object'
                             attrs="{'invisible': [('state', 'in', ('option', 'finished' ))]}" />
-                        <button name='action_skip' string='Skip these contacts'
+                        <button name='action_skip' string='跳过'
                             type='object'
                             attrs="{'invisible': [('state', '!=', 'selection')]}" />
                         <button name='action_start_manual_process'
-                            string='Merge with Manual Check'
+                            string='合并前手动检查'
                             type='object'  class='oe_highlight'
                             attrs="{'invisible': [('state', '!=', 'option')]}" />
                         <button name='action_start_automatic_process'
-                            string='Merge Automatically'
+                            string='全自动合并'
                             type='object' class='oe_highlight'
                             confirm="Are you sure to execute the automatic merge of your contacts ?"
                             attrs="{'invisible': [('state', '!=', 'option')]}" />
                         <button name='action_update_all_process'
-                            string='Merge Automatically all process'
+                            string='一键合并'
                             type='object'
                             confirm="Are you sure to execute the list of automatic merges of your contacts ?"
                             attrs="{'invisible': [('state', '!=', 'option')]}" />
-                        <button special="cancel" string="Cancel" type="object" class="btn btn-secondary oe_inline" attrs="{'invisible': [('state', '=', 'finished')]}"/>
-                        <button special="cancel" string="Close" type="object" class="btn btn-secondary oe_inline" attrs="{'invisible': [('state', '!=', 'finished')]}"/>
+                        <button special="cancel" string="取消" type="object" class="btn btn-secondary oe_inline" attrs="{'invisible': [('state', '=', 'finished')]}"/>
+                        <button special="cancel" string="关闭" type="object" class="btn btn-secondary oe_inline" attrs="{'invisible': [('state', '!=', 'finished')]}"/>
                     </footer>
                 </form>
             </field>
@@ -105,5 +100,5 @@
             binding_views="list"
             target="new"
             view_mode="form"
-            name="Merge"/>
+            name="合并"/>
 </odoo>

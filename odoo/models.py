@@ -2947,6 +2947,9 @@ Fields:
         from_clause, where_clause, params = query.get_sql()
         query_str = "SELECT %s FROM %s WHERE %s" % (",".join(qual_names), from_clause, where_clause)
 
+#         print('Anodoo SQL Debug .....')
+#         print(query_str)
+        
         # fetch one list of record values per field
         param_pos = params.index(param_ids)
 
@@ -3550,6 +3553,10 @@ Record ids: %(records)s
             )
             params = [column[2] for column in columns]
             for sub_ids in cr.split_for_in_conditions(set(self.ids)):
+                
+#                 print('Anodoo SQL Debug .....')
+#                 print(query)
+        
                 cr.execute(query, params + [sub_ids])
                 if cr.rowcount != len(sub_ids):
                     raise MissingError(
@@ -3750,6 +3757,11 @@ Record ids: %(records)s
                 ", ".join(fmt for name, fmt, val in columns),
             )
             params = [val for name, fmt, val in columns]
+            
+#             print('Anodoo SQL Debug .....')
+#             print(query)
+#             print(str(params))
+                
             cr.execute(query, params)
             ids.append(cr.fetchone()[0])
 
@@ -4313,6 +4325,11 @@ Record ids: %(records)s
         limit_str = limit and ' limit %d' % limit or ''
         offset_str = offset and ' offset %d' % offset or ''
         query_str = 'SELECT "%s".id FROM ' % self._table + from_clause + where_str + order_by + limit_str + offset_str
+        
+#         print('Anodoo SQL Debug .....')
+#         print(query_str)
+#         print(str(where_clause_params))
+        
         self._cr.execute(query_str, where_clause_params)
         res = self._cr.fetchall()
 

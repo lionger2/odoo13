@@ -12853,7 +12853,7 @@ msgstr "生成、发送和跟踪EMail"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_base_partner_merge_automatic_wizard__dst_partner_id
 msgid "Destination Contact"
-msgstr "目的地之联系人"
+msgstr "目标联系人"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_actions_act_window__res_model
@@ -13503,7 +13503,7 @@ msgstr "EMail"
 #: model_terms:ir.ui.view,arch_db:base.view_users_form
 #: model_terms:ir.ui.view,arch_db:base.view_users_simple_form
 msgid "Email Address"
-msgstr "EMail地址"
+msgstr "登陆账号"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_fetchmail
@@ -16155,7 +16155,7 @@ msgstr "印度尼西亚"
 #: model_terms:ir.ui.view,arch_db:base.res_partner_industry_view_form
 #: model_terms:ir.ui.view,arch_db:base.res_partner_industry_view_tree
 msgid "Industry"
-msgstr "工业"
+msgstr "行业"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_model__info
@@ -25925,7 +25925,7 @@ msgstr "东帝汶"
 #: model:ir.model.fields,field_description:base.field_res_partner_title__name
 #: model:ir.model.fields,field_description:base.field_res_users__title
 msgid "Title"
-msgstr "标题"
+msgstr "称谓"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_sequence_date_range__date_to
