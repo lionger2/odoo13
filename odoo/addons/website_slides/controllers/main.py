@@ -21,7 +21,7 @@ _logger = logging.getLogger(__name__)
 class WebsiteSlides(WebsiteProfile):
     _slides_per_page = 12
     _slides_per_aside = 20
-    _slides_per_category = 4
+    _slides_per_category = 8
     _channel_order_by_criterion = {
         'vote': 'total_votes desc',
         'view': 'total_views desc',
@@ -276,6 +276,15 @@ class WebsiteSlides(WebsiteProfile):
             'challenges': challenges,
             'challenges_done': challenges_done,
         })
+        
+        website_domain = request.website.website_domain()
+        categs_domain = [('parent_id', '=', False)] + website_domain
+        Category = request.env['slide.channel.category']
+        categs = Category.search(categs_domain)
+        values.update({
+            'categories': categs
+            })
+        
 
         return request.render('website_slides.courses_home', values)
 

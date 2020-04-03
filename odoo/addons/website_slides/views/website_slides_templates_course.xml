@@ -174,7 +174,7 @@
                                     <a t-att-class="'nav-link %s' % ('active' if active_tab == 'home' else '')" 
                                         id="home-tab" data-toggle="pill" href="#home" role="tab" aria-controls="home" 
                                         t-att-aria-selected="'true' if active_tab == 'home' else 'false'">
-                                        <i class="fa fa-home"/> Course
+                                        <i class="fa fa-home"/> 课程
                                     </a>
                                 </li>
                                 <li t-if="channel.allow_comment" class="nav-item">

@@ -35,7 +35,7 @@
                                         <i class="fa fa-search"></i>
                                     </button>
                                 </span>
-                                <input type="text" class="form-control border-0 rounded-0 bg-transparent text-white" name="search" placeholder="Search users"/>
+                                <input type="text" class="form-control border-0 rounded-0 bg-transparent text-white" name="search" placeholder="搜索会员"/>
                             </div>
                         </form>
                     </div>
@@ -111,7 +111,7 @@
                                 </a>
                             </div>
                             <div class="form-group mt-3 mb-0 pt-2 border-top">
-                                <label class="text-primary" for="user_website_published" t-if="user.id == uid"><span class="font-weight-bold">Public profile</span></label>
+                                <label class="text-primary" for="user_website_published" t-if="user.id == uid"><span class="font-weight-bold">在社区中公开我的个人信息</span></label>
                                 <div class=" mb-0 float-right" t-if="user.id == uid">
                                     <input type="checkbox" class="mt8" name="website_published" id="user_website_published" value="True" t-if="not user.website_published"/>
                                     <input type="checkbox" class="mt8" name="website_published" id="user_website_published" value="True" checked="checked" t-if="user.website_published"/>
@@ -126,14 +126,14 @@
                             <div class="row">
                                 <input name="user_id" t-att-value="user.id" type="hidden"/>
                                 <div class="form-group col-12">
-                                    <label class="text-primary mb-1 d-block" for="user_name"><span class="font-weight-bold">Real name</span></label>
+                                    <label class="text-primary mb-1 d-block" for="user_name"><span class="font-weight-bold">名称</span></label>
                                     <div>
                                         <input type="text" class="form-control" name="name" id="user_name" required="True" t-attf-value="#{user.name}"/>
                                     </div>
                                 </div>
 
                                 <div class="form-group col-6">
-                                    <label class="mb-1 text-primary" for="user_website"><span class="font-weight-bold">Website</span></label>
+                                    <label class="mb-1 text-primary" for="user_website"><span class="font-weight-bold">网址</span></label>
                                     <div>
                                         <input type="text" class="form-control" name="website" id="user_website" t-attf-value="#{user.partner_id.website or ''}"/>
                                     </div>
@@ -141,7 +141,7 @@
                                 <div class="form-group col-6">
                                     <div t-if="email_required" class="alert alert-danger alert-dismissable oe_email_required" role="alert">
                                         <button type="button" class="close" data-dismiss="alert">x</button>
-                                        <p>Please enter a valid email address in order to receive notifications from answers or comments.</p>
+                                        <p>请确保邮箱正确,以便接受确认邮件,重要通知等.</p>
                                     </div>
                                     <label class="mb-1 text-primary" for="user_email"><span class="font-weight-bold">Email</span></label>
                                     <div>
@@ -149,16 +149,16 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-6">
-                                    <label class="mb-1 text-primary" for="user_city"><span class="font-weight-bold">City</span></label>
+                                    <label class="mb-1 text-primary" for="user_city"><span class="font-weight-bold">城市</span></label>
                                     <div>
                                         <input type="text" class="form-control" name="city" id="user_city" t-attf-value="#{user.partner_id.city or ''}"/>
                                     </div>
                                 </div>
                                 <div class="form-group col-6">
-                                    <label class="mb-1 text-primary"><span class="font-weight-bold">Country</span></label>
+                                    <label class="mb-1 text-primary"><span class="font-weight-bold">国家</span></label>
                                     <div>
                                         <select class="form-control" name="country">
-                                            <option value="">Country...</option>
+                                            <option value="">国家...</option>
                                             <t t-foreach="countries or []" t-as="country">
                                                 <option t-att-value="country.id" t-att-selected="country.id == user.partner_id.country_id.id"><t t-esc="country.name"/></option>
                                             </t>
@@ -166,12 +166,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-12">
-                                    <label class="mb-1 text-primary" for="description"><span class="font-weight-bold">Biography</span></label>
+                                    <label class="mb-1 text-primary" for="description"><span class="font-weight-bold">个人简介</span></label>
                                     <textarea name="description" id="description" style="min-height: 120px"
                                         class="form-control o_wysiwyg_loader"><t t-esc="user.partner_id.website_description"/></textarea>
                                 </div>
                                 <div class="col">
-                                    <button type="submit" class="btn btn-primary o_wprofile_submit_btn">Update</button>
+                                    <button type="submit" class="btn btn-primary o_wprofile_submit_btn">更新</button>
                                 </div>
                             </div>
                         </div>
@@ -205,7 +205,7 @@
                         <div t-attf-class="d-flex align-items-start h-100 #{'justify-content-between' if (request.env.user == user) else 'justify-content-around' }">
                             <div class="o_wprofile_pict d-inline-block mb-3 mb-md-0" t-attf-style="background-image: url(#{website.image_url(user, 'image_1024')});"/>
                             <a class="btn btn-primary d-inline-block d-md-none" t-if="request.env.user == user and user.karma != 0" t-attf-href="/profile/edit?url_param=#{edit_button_url_param}">
-                                <i class="fa fa-pencil mr-1"/>EDIT
+                                <i class="fa fa-pencil mr-1"/>编辑
                             </a>
                         </div>
                     </div>
@@ -214,10 +214,10 @@
                     <div class="col-12 col-md-8 col-lg-9 d-flex flex-column">
                         <div class="d-flex justify-content-between align-items-start">
                             <h1 class="o_card_people_name">
-                                <span t-field="user.name"/><small t-if="user.karma == 0"> (not verified)</small>
+                                <span t-field="user.name"/><small t-if="user.karma == 0"> (未验证)</small>
                             </h1>
                             <a class="btn btn-primary d-none d-md-inline-block" t-if="request.env.user == user and user.karma != 0 or request.env.user._is_admin()" t-attf-href="/profile/edit?url_param=#{edit_button_url_param}">
-                                <i class="fa fa-pencil mr-2"/>EDIT PROFILE
+                                <i class="fa fa-pencil mr-2"/>编辑个人社区信息
                             </a>
                         </div>
 
@@ -248,7 +248,7 @@
                     <div class="o_wprofile_sidebar bg-white px-3 py-2 py-md-3 mb-3 mb-md-5">
                         <div class="o_wprofile_sidebar_top d-flex justify-content-between">
                             <div t-if="user.rank_id" class="d-flex align-items-center">
-                                <small class="font-weight-bold mr-2">Current rank:</small>
+                                <small class="font-weight-bold mr-2">当前级别:</small>
                                 <img t-att-src="website.image_url(user.rank_id, 'image_128')" width="16" height="16" alt="" class="o_object_fit_cover mr-1"/>
                                 <a href="/profile/ranks_badges" t-field="user.rank_id"/>
                             </div>
@@ -256,7 +256,7 @@
                         </div>
                         <div class="collapse d-md-block" id="o_wprofile_sidebar_collapse">
                             <t t-set="next_rank_id" t-value="user._get_next_rank()"/>
-                            <small t-if="next_rank_id" class="font-weight-bold mt-1">Next rank:</small>
+                            <small t-if="next_rank_id" class="font-weight-bold mt-1">下一个级别:</small>
                             <t t-if="next_rank_id or user.rank_id" t-call="website_profile.profile_next_rank_card">
                                 <t t-set="img_max_width">40%</t>
                             </t>
@@ -264,11 +264,11 @@
                             <table class="table table-sm w-100" id="o_wprofile_sidebar_table">
                                 <tbody>
                                     <tr>
-                                        <th><small class="font-weight-bold">Joined</small></th>
-                                        <td><span t-field="user.create_date" t-options='{"format": "d MMM Y"}'/></td>
+                                        <th><small class="font-weight-bold">加入时间</small></th>
+                                        <td><span t-field="user.create_date" t-options='{"format": "Y-MM-dd"}'/></td>
                                     </tr>
                                     <tr>
-                                        <th><small class="font-weight-bold">Badges</small></th>
+                                        <th><small class="font-weight-bold">已获奖章</small></th>
                                         <td t-if="user.badge_ids" t-esc="len(user.badge_ids.filtered(lambda b: b.badge_id.website_published))"/>
                                         <td t-else="">0</td>
                                     </tr>
@@ -290,15 +290,15 @@
                             <div class="o_wprofile_email_validation_container mb16 mt16">
                                 <t t-call="website_profile.email_validation_banner">
                                     <t t-set="redirect_url" t-value="'/profile/user/%s' % user.id"/>
-                                    <t t-set="send_validation_email_message" t-value="'Click here to send a verification email.'"/>
+                                    <t t-set="send_validation_email_message" t-value="'点击这里发送确认邮件到您的注册邮箱'"/>
                                 </t>
                             </div>
                             <div id="profile_about_badge" class="mb32">
-                                <h5 class="border-bottom pb-1">Badges</h5>
+                                <h5 class="border-bottom pb-1">奖章</h5>
                                 <t t-call="website_profile.user_badges"></t>
                             </div>
                             <div t-if="user.partner_id.website_description" class="mb32">
-                                <h5 class="border-bottom pb-1">Biography</h5>
+                                <h5 class="border-bottom pb-1">个人简介</h5>
                                 <span t-field="user.partner_id.website_description"/>
                             </div>
                         </div>
@@ -377,11 +377,11 @@
             </t>
         </div>
         <div class="mb-3" t-if="not user.badge_ids">
-            <p class="text-muted">No badge yet</p>
+            <p class="text-muted">暂无奖章</p>
         </div>
         <div class="text-right">
             <a t-if="not user.badge_ids and badge_category" t-attf-href="/profile/ranks_badges?badge_category=#{badge_category}"><i class="fa fa-arrow-right"/> Check available badges</a>
-            <a t-else="" href="/profile/ranks_badges" class="btn btn-link btn-sm"><i class="fa fa-arrow-right mr-1"/>Check all available badges</a>
+            <a t-else="" href="/profile/ranks_badges" class="btn btn-link btn-sm"><i class="fa fa-arrow-right mr-1"/>查看所有奖章</a>
         </div>
     </template>
 
@@ -391,16 +391,16 @@
             <div class="container mb32 mt48">
                 <div class="row justify-content-between" t-if="ranks">
                     <div class="col-12 col-md-6 col-lg-5">
-                        <h1>Ranks</h1>
-                        <p class="lead mb-4">Keep learning with <t t-esc="user.company_id.name"/>. Collect points on the forum or on the eLearning platform. Those points will make you reach new ranks.</p>
-                        <h5>How do I earn badges?</h5>
-                        <p>When you finish a course or reach milestones, you're awarded badges.</p>
-                        <h5>How do I score more points?</h5>
-                        <p>You can score more points by answering quizzes at the end of each course content. Points can also be earned on the forum. Follow this link to the guidelines of the forum.</p>
+                        <h1>级别</h1>
+                        <p class="lead mb-4">通过论坛,学习中心等社区功能收集积分,积分可以帮助您进入更高的会员级别,得到更多的奖章.</p>
+                        <h5>我怎么得到奖章?</h5>
+                        <p>当您完成一个课程,或者达到一个里程时,系统根据设置,自动奖励您特定的奖章.</p>
+                        <h5>我怎么得到积分?</h5>
+                        <p>学习更多内容,完成课程后面的小测验等等都可以帮助您得到积分.在论坛中提问,回答问题等也一样可以积累积分.具体得到多少积分会在特定的功能处标明.</p>
                     </div>
                     <div class="col-12 col-md-5 col-lg-4">
                         <div class="card">
-                            <div class="card-header border-bottom-0">Ranks</div>
+                            <div class="card-header border-bottom-0">级别</div>
                             <ul class="list-group list-group-flush">
                                 <t t-foreach="ranks" t-as="rank">
                                     <li t-attf-class="list-group-item">
@@ -408,7 +408,7 @@
                                             <img t-att-src="website.image_url(rank, 'image_128')" class="mr-2 o_image_40_cover" alt="Rank badge"/>
                                             <div class="media-body">
                                                 <h5 class="mt-0 mb-0" t-field="rank.name"/>
-                                                <span class="badge badge-success"><span t-field="rank.karma_min"/></span> point<span t-if="rank.karma_min">s</span>
+                                                <span class="badge badge-success"><span t-field="rank.karma_min"/></span> 积分
                                             </div>
                                         </div>
                                     </li>
@@ -425,11 +425,11 @@
     <template id="badge_content" name="Badges Page content">
         <div class="row">
             <div class="col-12">
-                <h1 class="mt-4 mt-lg-2">Badges</h1>
+                <h1 class="mt-4 mt-lg-2">奖章</h1>
                 <p class="lead">
-                    Besides gaining reputation with your questions and answers,
-                    you receive badges for being especially helpful.<br class="d-none d-lg-inline-block"/>Badges
-                    appear on your profile page, and your posts.
+                	通过学习,完成特定的任务,帮助他人等等,都可以自动,或由他人赠与您奖章.
+                    <br class="d-none d-lg-inline-block"/>
+					奖章将显示在您社区中心的个人信息,以及论坛,学习中心等社区功能中.
                 </p>
             </div>
         </div>
@@ -499,7 +499,7 @@
                 </tr>
             </table>
             <t t-if='search'>
-                <div class='alert alert-warning'>No user found for <strong><t t-esc="search"/></strong>. Try another search.</div>
+                <div class='alert alert-warning'>没有找到会员:<strong><t t-esc="search"/></strong>. 请重新搜索.</div>
             </t>
             <div class="form-inline justify-content-center">
                 <t t-call="website_profile.pager_nobox"/>
@@ -576,14 +576,14 @@
 
         <div t-if="not validation_email_sent and not is_public_user and user.karma == 0" t-att-class="send_alert_classes" role="alert">
             <button type="button" class="close validation_email_close" data-dismiss="alert" aria-label="Close">&amp;times;</button>
-            It appears your email has not been verified.<br/>
+            您的邮箱地址还没有确认.为了更好地使用社区中心的服务,请您使用正确的邮箱地址注册并点击下方进行确认.<br/>
             <a class="send_validation_email alert-link" href="#" t-att-data-redirect_url="redirect_url">
                 <span t-esc="send_validation_email_message"/>
             </a>
         </div>
         <div t-if="validation_email_done" t-att-class="done_alert_classes" role="status">
             <button type="button" class="close validated_email_close" data-dismiss="alert" aria-label="Close">&amp;times;</button>
-            <span id="email_validated_message">Congratulations! Your email has just been validated.</span>
+            <span id="email_validated_message">恭喜您,邮箱已经确认.</span>
             <span t-esc="additional_validated_email_message"/>
         </div>
     </template>

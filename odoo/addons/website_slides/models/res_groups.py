@@ -3,7 +3,10 @@
 
 from odoo import api, models
 
-
+'''
+    自动报名组.
+    课程可以设置自动报名组,凡是组内成员可以自动报名课程
+'''
 class UserGroup(models.Model):
     _inherit = 'res.groups'
 
