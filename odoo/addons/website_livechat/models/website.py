@@ -12,7 +12,7 @@ class Website(models.Model):
 
     def get_livechat_channel_info(self):
         """ Get the livechat info dict (button text, channel name, ...) for the livechat channel of
-            the current website.
+            the cu rrent website.
         """
         self.ensure_one()
         if self.channel_id:

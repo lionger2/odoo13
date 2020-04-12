@@ -6,7 +6,7 @@
         <div class="o_livechat_rating text-center">
             <div class="o_livechat_rating_box">
                 <div class="o_livechat_rating_feedback_text">
-                    Did we correctly answer your question ?
+                    问题是否得到正确解答 ?
                 </div>
                 <div class="o_livechat_rating_choices">
                     <img t-att-src="widget.server_origin + '/rating/static/src/img/rating_10.png'" alt="Good" data-value="10"/>
@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="o_livechat_email">
-                <span class="text-muted">Receive a copy of this conversation</span>
+                <span class="text-muted">通过邮箱获取在线聊天记录</span>
                 <div class="input-group">
                     <input id="o_email" type="text" class="form-control" placeholder="mail@example.com"/>
                     <button type="button" class="o_email_chat_button btn btn-primary rounded-0">
@@ -30,11 +30,11 @@
                 </div>
             </div>
             <div class="alert alert-danger px-0 o_livechat_email_error" style="display: none;" role="alert">
-                Oops! Something went wrong.<br />Please check your internet connection.<br />
-                <a href="#" class="alert-link">Try again</a>
+                出现异常.<br />请检查网络连接.<br />
+                <a href="#" class="alert-link">再次尝试</a>
             </div>
             <div class="o_livechat_no_feedback text-muted">
-                <span>Close conversation</span>
+                <span>关闭会话</span>
             </div>
         </div>
     </t>

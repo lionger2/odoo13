@@ -65,9 +65,9 @@
                 </div>
 
                 <div class="d-flex border-bottom pb-1 pt-3 mb-3">
-                    <h2 class="h4 mb-0 text-muted">Courses Discussions</h2>
+                    <h2 class="h4 mb-0 text-muted">课程讨论板块</h2>
                     <div class="flex-grow-1 text-right">
-                        <a href="/slides" title="See all Courses">Check our Courses <i class="fa fa-chevron-right"/></a>
+                        <a href="/slides" title="See all Courses">查看所有课程 <i class="fa fa-chevron-right"/></a>
                     </div>
                 </div>
                 <div class="row">
