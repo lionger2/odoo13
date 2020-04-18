@@ -614,11 +614,6 @@
             </div>
         </t>
     </div>
-    <t t-if="search_category">
-        <div class="form-inline justify-content-center pb-5">
-            <t t-call="website_profile.pager_nobox"></t>
-        </div>
-    </t>
 </template>
 
 <template id='lesson_card' name="Lesson Card">

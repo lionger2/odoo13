@@ -21,7 +21,7 @@ _logger = logging.getLogger(__name__)
 class WebsiteSlides(WebsiteProfile):
     _slides_per_page = 12
     _slides_per_aside = 20
-    _slides_per_category = 8
+    _slides_per_category = 4
     _channel_order_by_criterion = {
         'vote': 'total_votes desc',
         'view': 'total_views desc',
