@@ -12,7 +12,7 @@ class Users(models.Model):
     _inherit = 'res.users'
 
 
-    karma = fields.Integer('Karma', default=0)
+    karma = fields.Integer('Karma', default=100)
     badge_ids = fields.One2many('gamification.badge.user', 'user_id', string='Badges', copy=False)
     gold_badge = fields.Integer('Gold badges count', compute="_get_user_badge_level")
     silver_badge = fields.Integer('Silver badges count', compute="_get_user_badge_level")
@@ -45,6 +45,10 @@ class Users(models.Model):
 
     @api.model_create_multi
     def create(self, values_list):
+      #  for values in values_list:
+            #if 'karma' in values:  # needed to compute reply_to
+          #  values['karma'] = 1
+                
         res = super(Users, self).create(values_list)
         res._recompute_rank()
         return res

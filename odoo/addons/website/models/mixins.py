@@ -143,7 +143,7 @@ class WebsitePublishedMixin(models.AbstractModel):
         return {
             'type': 'ir.actions.act_url',
             'url': self.website_url,
-            'target': 'self',
+            'target': 'new',
         }
 
     @api.model_create_multi

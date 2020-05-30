@@ -487,6 +487,7 @@ class MailActivity(models.Model):
             messages |= record.message_ids[0]
 
         next_activities = self.env['mail.activity'].create(next_activities_values)
+        #Anodoo begin:不是不删除那么简单
         self.unlink()  # will unlink activity, dont access `self` after that
 
         return messages, next_activities
